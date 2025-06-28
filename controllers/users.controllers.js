@@ -49,7 +49,7 @@ async function  userlogincheck(req,res) {
     //     mssg : "User login Successfully!!",
     //     status : "Passed"
     // }) // for testing purpose using res.send() 😊
-    res.render("../views/birthday.ejs")
+    res.redirect("/")
 }
 
 

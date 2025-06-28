@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 
+
 const birthdaySchema = new mongoose.Schema({
     date:{
         type:String,
@@ -8,6 +9,10 @@ const birthdaySchema = new mongoose.Schema({
     name:{
         type:String,
         required: true
+    },
+    createdBy :{
+        type: mongoose.Schema.Types.ObjectId,
+        ref : "user"
     }
 })
 

@@ -4,8 +4,9 @@ const secretkey = "Jashu@#$"
 
 function setUser(user){
     const payload = {
-         email: user.email,
-        password:user.password
+        _id: user._id, // include _id in the payload
+        email: user.email,
+        password: user.password,
     }
 
     return jwt.sign(payload, secretkey);

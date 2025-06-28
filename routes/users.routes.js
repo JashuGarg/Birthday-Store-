@@ -25,7 +25,7 @@ router
     .get(checkifuserisloggedin,(req,res)=>{
         res.render("../views/birthday.ejs")
     })
-    .post(storebirthday)
+    .post(checkifuserisloggedin,storebirthday)
 
 router
     .route("/dashboard")
