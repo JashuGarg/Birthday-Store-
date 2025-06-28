@@ -23,7 +23,7 @@ router
 router
     .route("/")
     .get(checkifuserisloggedin,(req,res)=>{
-        res.render("../views/signup.ejs")
+        res.render("../views/birthday.ejs")
     })
     .post(storebirthday)
 
