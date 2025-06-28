@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Birthday Table</title>
+  <style>
+    table {
+      width: 50%;
+      margin: 20px auto;
+      border-collapse: collapse;
+      text-align: left;
+    }
+    th, td {
+      padding: 10px;
+      border: 1px solid #ccc;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+  </style>
+</head>
+<body>
+
+  <h2 style="text-align:center;">Name and Birthday List</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Birthday</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% people.forEach(person => { %>
+        <tr>
+          <td><%= person.name %></td>
+          <td><%= person.date %></td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+</body>
+</html>
