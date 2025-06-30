@@ -1,5 +1,6 @@
 import { users } from "../models/user.model.js";
 import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 import { setUser } from "../utils/auth.js";
 import cookieParser from "cookie-parser";
@@ -14,10 +15,11 @@ async function singupdataupload(req,res){
     });
     }
 
+    const hashPass = await bcrypt.hash(body.password,10)
     const user = await users.create({
         username: body.username,
         email : body.email,
-        password : body.password
+        password : hashPass
     })
 
     const token = setUser(user)
@@ -38,10 +40,16 @@ async function  userlogincheck(req,res) {
     
     const user = await users.findOne({
         email: body.email,
-        password:body.password
-    })
+    }) 
 
-    if(!user) return res.render("/signup");
+if(!user) return res.render("/signup");
+
+const isMatch = await bcrypt.compare(body.password, user.password);
+    if (!isMatch) {
+        // password is incorrect
+        return res.render("login", { error: "Invalid credentials" }); // or redirect
+    }
+
     const token = setUser(user)
 
     res.cookie("uuid",token) ;
